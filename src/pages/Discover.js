@@ -6,9 +6,8 @@ import Person from "../components/Person";
 const Fab = ({ kind, large, onClick }) => (
   <button
     onClick={onClick}
-    className={`btn-default btn-floating waves-effect waves-light ${
-      large && "btn-large"
-    }`}
+    className={`btn-default btn-floating waves-effect waves-light ${large &&
+      "btn-large"}`}
   >
     <i className="material-icons">{kind}</i>
   </button>
