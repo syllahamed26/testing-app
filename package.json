@@ -3,13 +3,20 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_OPTIONS=--openssl-legacy-provider webpack-dev-server --mode=development",
-    "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider webpack --mode=production",
+    "start": "cross-env webpack-dev-server --mode=development",
     "postbuild": "cp ./public/index.html ./dist/index.html",
-    "preview": "serve --no-clipboard --single --listen 8080 dist"
+    "preview": "serve --no-clipboard --single --listen 8080 dist",
+    "build": "babel src --out-dir dist",
+    "lint": "eslint --ignore-path .gitignore .",
+    "lint:fix": "npm run lint -- --fix",
+    "format": "prettier ./src \"**/*.+(js|json|css)\"",
+    "format:fix": "npm run format -- --write",
+    "format:check": "npm run format -- --check",
+    "check": "npm run lint && npm run build && npm run format:check"
   },
   "devDependencies": {
     "@babel/core": "^7.7.4",
+    "@babel/eslint-parser": "^7.21.8",
     "@babel/plugin-transform-runtime": "^7.7.4",
     "@babel/preset-env": "^7.7.4",
     "@babel/preset-react": "^7.7.4",
@@ -17,6 +24,8 @@
     "babel-loader": "^8.0.6",
     "cross-env": "^7.0.3",
     "css-loader": "^3.2.0",
+    "eslint": "^8.41.0",
+    "eslint-config-prettier": "^8.8.0",
     "file-loader": "^5.0.2",
     "prettier": "^1.19.1",
     "prop-types": "^15.7.2",

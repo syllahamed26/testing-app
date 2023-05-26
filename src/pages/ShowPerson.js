@@ -5,7 +5,7 @@ import Person from "../components/Person";
 const ShowPerson = ({ people }) => {
   const params = useParams();
 
-  const person = people.find((person) => person.id === params.id);
+  const person = people.find(person => person.id === params.id);
 
   return (
     <div className="card-container">
