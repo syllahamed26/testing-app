@@ -1,16 +1,17 @@
-import React, { useState } from "react";
-import Person from "../components/Person";
-import SearchInput from "../components/SearchInput";
+import React, {useState} from 'react'
+import Person from '../components/Person'
+import SearchInput from '../components/SearchInput'
+import PropTypes from 'prop-types'
 
 const filterPerson = search => {
-  const re = new RegExp(search, "i");
-  return person => re.test(person.firstname) || re.test(person.lastname);
-};
+  const re = new RegExp(search, 'i')
+  return person => re.test(person.firstname) || re.test(person.lastname)
+}
 
-const ListAll = ({ people }) => {
-  const [searchInputValue, setSearchInputValue] = useState("");
+const ListAll = ({people}) => {
+  const [searchInputValue, setSearchInputValue] = useState('')
 
-  const handleChange = e => setSearchInputValue(e?.target?.value ?? "");
+  const handleChange = e => setSearchInputValue(e?.target?.value ?? '')
 
   return (
     <>
@@ -28,7 +29,10 @@ const ListAll = ({ people }) => {
         ))}
       </div>
     </>
-  );
-};
+  )
+}
 
-export default ListAll;
+ListAll.propTypes = {
+  people: PropTypes.arrayOf(PropTypes.object).isRequired,
+}
+export default ListAll
